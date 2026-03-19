@@ -101,7 +101,8 @@ O console do H2 estará disponível em `http://localhost:8080/h2-console`
 
 A aplicação está hospedada no Railway:
 
-👉 **[Link da API em produção](https://seu-link-aqui.railway.app)**
+👉 **[Link da API em produção](https://financas-api-production-5172.up.railway.app/api/transacoes)**
+
 
 ## 👨‍💻 Autor
 
