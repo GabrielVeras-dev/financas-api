@@ -69,6 +69,13 @@ public class TransacaoService {
                 .toList();
     }
 
+    public List<TransacaoDTO> listarPorCategoria(String categoria) {
+        return repository.findByCategoria(categoria)
+                .stream()
+                .map(this::toDTO)
+                .toList();
+    }
+
     private TransacaoDTO toDTO(Transacao transacao) {
         TransacaoDTO dto = new TransacaoDTO();
         dto.setId(transacao.getId());

@@ -60,4 +60,9 @@ public class TransacaoController {
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fim) {
         return ResponseEntity.ok(service.listarPorPeriodo(inicio, fim));
     }
+
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<List<TransacaoDTO>> listarPorCategoria(@PathVariable String categoria) {
+        return ResponseEntity.ok(service.listarPorCategoria(categoria));
+    }
 }
