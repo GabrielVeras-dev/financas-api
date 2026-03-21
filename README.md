@@ -48,6 +48,7 @@ Controller → Service → Repository → Model
 | DELETE | `/api/transacoes/{id}` | Remove uma transação |
 | GET | `/api/transacoes/tipo/{tipo}` | Filtra por tipo (RECEITA ou DESPESA) |
 | GET | `/api/transacoes/periodo?inicio=&fim=` | Filtra por período |
+| GET | `/api/transacoes/categoria/{categoria}` | Filtra por categoria |
 
 ### Exemplo de requisição (POST /api/transacoes)
 ```json
