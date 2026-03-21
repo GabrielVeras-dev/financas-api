@@ -11,9 +11,12 @@ public class ResumoFinanceiroDTO {
     public ResumoFinanceiroDTO(BigDecimal totalReceitas, BigDecimal totalDespesas) {
         this.totalReceitas = totalReceitas;
         this.totalDespesas = totalDespesas;
-        this.saldo = totalReceitas.subtract(totalDespesas);
+        this.saldo = totalReceitas.subtract(totalDespesas); // saldo = receitas - despesas
     }
 
+    /* Os getters abaixo aparecem como "no usages" na IDE, mas são utilizados
+    pelo Jackson em tempo de execução via reflexão para serializar o objeto em JSON.
+    Sem eles, o endpoint /resumo retornaria um JSON vazio {}. */
     public BigDecimal getTotalReceitas() { return totalReceitas; }
     public BigDecimal getTotalDespesas() { return totalDespesas; }
     public BigDecimal getSaldo() { return saldo; }
