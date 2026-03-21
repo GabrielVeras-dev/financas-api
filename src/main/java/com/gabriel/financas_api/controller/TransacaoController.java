@@ -1,5 +1,6 @@
 package com.gabriel.financas_api.controller;
 
+import com.gabriel.financas_api.dto.ResumoFinanceiroDTO;
 import com.gabriel.financas_api.dto.TransacaoDTO;
 import com.gabriel.financas_api.model.TipoTransacao;
 import com.gabriel.financas_api.service.TransacaoService;
@@ -64,5 +65,10 @@ public class TransacaoController {
     @GetMapping("/categoria/{categoria}")
     public ResponseEntity<List<TransacaoDTO>> listarPorCategoria(@PathVariable String categoria) {
         return ResponseEntity.ok(service.listarPorCategoria(categoria));
+    }
+
+    @GetMapping("/resumo")
+    public ResponseEntity<ResumoFinanceiroDTO> obterResumo() {
+        return ResponseEntity.ok(service.obterResumo());
     }
 }

@@ -1,5 +1,6 @@
 package com.gabriel.financas_api.service;
 
+import com.gabriel.financas_api.dto.ResumoFinanceiroDTO;
 import com.gabriel.financas_api.dto.TransacaoDTO;
 import com.gabriel.financas_api.model.Transacao;
 import com.gabriel.financas_api.model.TipoTransacao;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.math.BigDecimal;
 
 @Service
 public class TransacaoService {
@@ -74,6 +76,20 @@ public class TransacaoService {
                 .stream()
                 .map(this::toDTO)
                 .toList();
+    }
+
+    public ResumoFinanceiroDTO obterResumo() {
+        BigDecimal totalReceitas = repository.findByTipo(TipoTransacao.RECEITA)
+                .stream()
+                .map(Transacao::getValor)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        BigDecimal totalDespesas = repository.findByTipo(TipoTransacao.DESPESA)
+                .stream()
+                .map(Transacao::getValor)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return new ResumoFinanceiroDTO(totalReceitas, totalDespesas);
     }
 
     private TransacaoDTO toDTO(Transacao transacao) {
